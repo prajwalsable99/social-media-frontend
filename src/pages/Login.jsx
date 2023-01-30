@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 // import axios from 'axios'
 import { useState } from 'react'
-
+import { useSelector,useDispatch } from 'react-redux'
+import { loginUserAction } from '../store/authActions'
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
+
+    const dispatch=useDispatch();
+
+    const {error,loading,isAuth,user} =useSelector((state)=>state.auth);
+
+    const navigate=useNavigate();
+    // useEffect(()=>{
+          
+    //   if(isAuth){
+    //       navigate('/home');
+    //   }
+
+    // },[error, loading, isAuth, navigate])
+
+
   const [formdata, setFormdata] = useState({
 
     email: "",
@@ -19,16 +36,20 @@ const Login = () => {
 
   const handlelogin = (e) => {
     e.preventDefault();
-    console.log(formdata);
+    // console.log(formdata);
+    dispatch(loginUserAction(formdata));
+    
+    // console.log(error,loading,isAuth,user)
   }
 
 
 
   return (
     <div>
-      <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
+      <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50 bg-gray-800">
         <div>
-          <h3 className="text-4xl font-bold text-purple-600">
+         
+          <h3 className="text-4xl font-bold text-yellow-600">
             Login
           </h3>
 
@@ -49,7 +70,8 @@ const Login = () => {
                   name="email"
                   value={formdata.email}
                   onChange={handlechange}
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="block 
+                  bg-gray-200 w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
               </div>
             </div>
@@ -60,6 +82,7 @@ const Login = () => {
               >
                 Password
               </label>
+              
               <div className="flex flex-col items-start">
                 <input
                   required
@@ -68,14 +91,14 @@ const Login = () => {
                   name="password"
                   value={formdata.password}
                   onChange={handlechange}
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="block w-full mt-1  bg-gray-200 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
               </div>
             </div>
-
+            <div className=' text-rose-600  bg-gray-300 text-center'> {error && <p> {error}</p>}</div>
             <div className="flex items-center justify-end mt-4">
               <Link to='/register'
-                className="text-sm text-gray-600 underline hover:text-gray-900"
+                className="text-sm text-red-600 underline hover:text-gray-900"
 
               >
                 Don't have account ?
@@ -86,6 +109,7 @@ const Login = () => {
               >
                Login
               </button>
+              
             </div>
           </form>
         </div>

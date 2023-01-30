@@ -20,7 +20,7 @@ const Register = () => {
     const handleregister=(e)=>{
         e.preventDefault();
         console.log(formdata);
-        axios.post('http://localhost:5000/api/v1/user/create', formdata)
+        axios.post('/api/v1/user/create', formdata)
         .then((res)=>{
              
                     alert("user registered successfully")
@@ -47,10 +47,10 @@ const Register = () => {
     }
     return (
         <div>
-            <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
+            <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50 bg-gray-800">
                 <div>
-                        <h3 className="text-4xl font-bold text-purple-600">
-                            Logo
+                        <h3 className="text-4xl font-bold text-yellow-600">
+                            Register
                         </h3>
                    
                 </div>
@@ -70,7 +70,7 @@ const Register = () => {
                                     onChange={handlechange}
                                     type="text"
                                     name="name"
-                                    className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    className="block bg-gray-200 w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 />
                             </div>
                         </div>
@@ -88,7 +88,7 @@ const Register = () => {
                                     name="email"
                                     value={formdata.email}
                                     onChange={handlechange}
-                                    className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    className="block bg-gray-200 w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 />
                             </div>
                         </div>
@@ -107,14 +107,14 @@ const Register = () => {
                                     name="password"
                                     value={formdata.password}
                                     onChange={handlechange}
-                                    className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    className="block w-full mt-1 bg-gray-200 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 />
                             </div>
                         </div>
                        
                         <div className="flex items-center justify-end mt-4">
                             <Link to ='/'
-                                className="text-sm text-gray-600 underline hover:text-gray-900"
+                                className="text-sm text-red-600 underline hover:text-gray-900"
                             
                             >
                                 Already registered?
