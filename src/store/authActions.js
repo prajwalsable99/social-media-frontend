@@ -82,7 +82,7 @@ export const LogoutAction=createAsyncThunk(
     'auth/logout',
 
     //second arg 
-    async (rejectWithValue)=>{
+    async (_,{rejectWithValue})=>{
         
         try {
             const config={

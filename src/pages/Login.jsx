@@ -12,13 +12,7 @@ const Login = () => {
     const {error,loading,isAuth,user} =useSelector((state)=>state.auth);
 
     const navigate=useNavigate();
-    // useEffect(()=>{
-          
-    //   if(isAuth){
-    //       navigate('/home');
-    //   }
-
-    // },[error, loading, isAuth, navigate])
+    
 
 
   const [formdata, setFormdata] = useState({

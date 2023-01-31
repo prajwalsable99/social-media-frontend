@@ -1,26 +1,33 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import Navbar from '../components/Navbar';
+// import { useDispatch } from 'react-redux'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+
+import Navbar2 from '../components/Navbar2';
 import Posts from '../components/Posts';
 import Suggestions from '../components/Suggestions';
-import { LogoutAction } from '../store/authActions';
+import { getpostsfollAction } from '../store/getPostsofFollwing/getpostoffollActions';
+
 
 const Home = () => {
   const dispatch =useDispatch();
-  const handlelogout=()=>{
-      dispatch(LogoutAction())
+  useEffect( ()=>{
+    
 
-  }
+    dispatch(getpostsfollAction())
+  } ,[dispatch])
+ 
   return (
  <div>
-  <div className='h-screen grid grid-cols-8'>
-    <div className='col-span-1 bg-gray-400'>
-      <Navbar></Navbar>
+  
+  <div className='h-screen grid grid-cols-12'>
+  <div className='col-span-2 bg-white '>
+      <Navbar2></Navbar2>
     </div>
-    <div className='col-span-5 bg-black'>
+    <div className='col-span-6 bg-white justify-center flex border-solid border-2 '>
       <Posts></Posts>
     </div>
-    <div className='col-span-2 bg-gray-300'>
+    <div className='col-span-4 bg-white'>
       <Suggestions></Suggestions>
     </div>
   </div>
